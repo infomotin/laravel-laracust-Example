@@ -25,4 +25,22 @@ class IssueController extends Controller
         $issue->save();
         return redirect()->route('issues.index');
     }
+
+    //edit
+    public function edit(Issue $issue){
+        return view('issues.edit', compact('issue'));
+    }
+    //update
+    public function update(Request $request, Issue $issue){
+        $issue->name = $request->name;
+        $issue->priority = $request->priority;
+        $issue->message = $request->message;
+        $issue->save();
+        return redirect()->route('issues.index');
+    }
+    //destroy
+    public function destroy(Issue $issue){
+        $issue->delete();
+        return redirect()->route('issues.index');
+    }
 }
