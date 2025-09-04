@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Issue;
 use Illuminate\Support\ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -23,6 +24,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+       Issue::observe(\App\Observers\IssueObserver::class);
     }
 }
